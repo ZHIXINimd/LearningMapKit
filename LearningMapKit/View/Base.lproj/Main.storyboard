@@ -24,44 +24,120 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BD6-ll-pa9" userLabel="Control View">
                                 <rect key="frame" x="344" y="84" width="40" height="120"/>
                                 <subviews>
-                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wgz-gl-DHb">
-                                        <rect key="frame" x="4" y="5" width="35" height="70"/>
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Wgz-gl-DHb">
+                                        <rect key="frame" x="4" y="5" width="30" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1a-T9-afZ" userLabel="CenterToUser">
-                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="8zI-aj-Hew"/>
-                                                    <constraint firstAttribute="width" constant="35" id="bmS-TE-2NS"/>
+                                                    <constraint firstAttribute="height" constant="30" id="8zI-aj-Hew"/>
+                                                    <constraint firstAttribute="width" constant="30" id="bmS-TE-2NS"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="current-location-icon"/>
+                                                <state key="normal" image="current-location-icon"/>
                                                 <connections>
                                                     <action selector="userLocationBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TJR-fb-rZy"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUx-0c-gmY" userLabel="CenterToUser">
-                                                <rect key="frame" x="0.0" y="35" width="35" height="35"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUx-0c-gmY" userLabel="MapTypeButton">
+                                                <rect key="frame" x="0.0" y="40" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="3IH-vL-ko6"/>
-                                                    <constraint firstAttribute="width" constant="35" id="m3a-1c-kEl"/>
+                                                    <constraint firstAttribute="height" constant="30" id="3IH-vL-ko6"/>
+                                                    <constraint firstAttribute="width" constant="30" id="m3a-1c-kEl"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="map-icon"/>
+                                                <state key="normal" image="map-icon"/>
                                                 <connections>
                                                     <action selector="didTapMapBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jEf-Zi-jSN"/>
-                                                    <action selector="userLocationBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="exS-i7-Wbn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6o-h4-HMc" userLabel="SearchViewButton">
+                                                <rect key="frame" x="0.0" y="80" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="JGE-e8-chC"/>
+                                                    <constraint firstAttribute="height" constant="30" id="LSK-wT-oqf"/>
+                                                </constraints>
+                                                <state key="normal" image="pin"/>
+                                                <connections>
+                                                    <action selector="didTapSearchBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CZj-gf-Hww"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="mp8-mZ-gUk"/>
+                                            <constraint firstAttribute="width" constant="30" id="mp8-mZ-gUk"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="Wgz-gl-DHb" firstAttribute="leading" secondItem="BD6-ll-pa9" secondAttribute="leading" constant="4" id="Qdt-hX-T0M"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wgz-gl-DHb" secondAttribute="bottom" constant="5" id="WS9-fZ-Ben"/>
                                     <constraint firstAttribute="height" constant="120" id="hDw-6D-meg"/>
                                     <constraint firstItem="Wgz-gl-DHb" firstAttribute="top" secondItem="BD6-ll-pa9" secondAttribute="top" constant="5" id="j7P-Wk-jiT"/>
                                     <constraint firstAttribute="width" constant="40" id="r30-2A-geM"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBg-97-dzf" userLabel="Search View">
+                                <rect key="frame" x="0.0" y="896" width="414" height="358.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hD-ex-elH" userLabel="Close Search View Button">
+                                        <rect key="frame" x="370" y="4" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="e4B-fO-HMQ"/>
+                                            <constraint firstAttribute="width" constant="40" id="gRr-zH-f7D"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="close"/>
+                                        <connections>
+                                            <action selector="didTapCloseSearchViewBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ya0-uL-peE"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uzw-7h-wSX">
+                                        <rect key="frame" x="20" y="20" width="340" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="KsY-Eh-4hm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="r5q-uj-nTS">
+                                        <rect key="frame" x="10" y="74" width="127" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfm-c9-CuV" userLabel="Restaurant Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="nck-wN-xrE"/>
+                                                    <constraint firstAttribute="height" constant="50" id="non-AK-AJy"/>
+                                                </constraints>
+                                                <state key="normal" image="poi-restaurant"/>
+                                                <connections>
+                                                    <action selector="didTapRestaurantBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="REG-tc-cuC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elY-hI-8mf" userLabel="Starbucks Button">
+                                                <rect key="frame" x="77" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="bKy-Ob-NnO"/>
+                                                    <constraint firstAttribute="height" constant="50" id="vxN-R3-YeZ"/>
+                                                </constraints>
+                                                <state key="normal" image="poi-starbucks"/>
+                                                <connections>
+                                                    <action selector="didTapStarbucksBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a3f-Vb-EfQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="127" id="GK4-s7-lVJ"/>
+                                            <constraint firstAttribute="height" constant="50" id="hTt-56-Xv9"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Uzw-7h-wSX" firstAttribute="top" secondItem="SBg-97-dzf" secondAttribute="top" constant="20" id="62C-Aq-dhT"/>
+                                    <constraint firstItem="r5q-uj-nTS" firstAttribute="top" secondItem="Uzw-7h-wSX" secondAttribute="bottom" constant="20" id="76r-Ec-4so"/>
+                                    <constraint firstItem="r5q-uj-nTS" firstAttribute="leading" secondItem="SBg-97-dzf" secondAttribute="leading" constant="10" id="Vta-vb-phn"/>
+                                    <constraint firstAttribute="trailing" secondItem="4hD-ex-elH" secondAttribute="trailing" constant="4" id="Y6D-13-Vmb"/>
+                                    <constraint firstItem="Uzw-7h-wSX" firstAttribute="leading" secondItem="SBg-97-dzf" secondAttribute="leading" constant="20" id="ZSP-6U-hxd"/>
+                                    <constraint firstItem="4hD-ex-elH" firstAttribute="leading" secondItem="Uzw-7h-wSX" secondAttribute="trailing" constant="10" id="iBL-jA-rsB"/>
+                                    <constraint firstItem="4hD-ex-elH" firstAttribute="top" secondItem="SBg-97-dzf" secondAttribute="top" constant="4" id="v0v-CW-V1D"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -70,15 +146,21 @@
                             <constraint firstItem="HVo-v0-0CC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8hX-za-OkP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BD6-ll-pa9" secondAttribute="trailing" constant="30" id="Bsm-bP-r68"/>
                             <constraint firstItem="BD6-ll-pa9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="CHE-to-abX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SBg-97-dzf" secondAttribute="trailing" id="IZg-NX-kMd"/>
                             <constraint firstAttribute="trailing" secondItem="HVo-v0-0CC" secondAttribute="trailing" id="LHQ-w7-bSc"/>
+                            <constraint firstItem="SBg-97-dzf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="WnC-Zg-L7u"/>
                             <constraint firstAttribute="bottom" secondItem="HVo-v0-0CC" secondAttribute="bottom" id="bnh-IQ-zKU"/>
                             <constraint firstItem="HVo-v0-0CC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d8n-8n-y0g"/>
+                            <constraint firstItem="SBg-97-dzf" firstAttribute="height" secondItem="HVo-v0-0CC" secondAttribute="height" multiplier="0.4" id="stK-DM-eqr"/>
+                            <constraint firstItem="SBg-97-dzf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="umF-DK-A8R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="controlView" destination="BD6-ll-pa9" id="ygM-5c-7ZC"/>
                         <outlet property="mapView" destination="HVo-v0-0CC" id="mks-Cn-Hfk"/>
+                        <outlet property="searchView" destination="SBg-97-dzf" id="taP-nr-El7"/>
+                        <outlet property="searchViewTopConstraint" destination="WnC-Zg-L7u" id="JRq-ts-AHw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -87,7 +169,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close" width="189" height="188"/>
         <image name="current-location-icon" width="50" height="50"/>
         <image name="map-icon" width="50" height="50"/>
+        <image name="pin" width="46" height="50"/>
+        <image name="poi-restaurant" width="50" height="50"/>
+        <image name="poi-starbucks" width="50" height="50"/>
     </resources>
 </document>

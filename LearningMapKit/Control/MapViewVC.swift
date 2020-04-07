@@ -13,6 +13,8 @@ class MapViewVC: UIViewController {
     
     @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var controlView: UIView!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchViewTopConstraint: NSLayoutConstraint!
     
     private let locationService = LocationService()
     
@@ -36,6 +38,7 @@ class MapViewVC: UIViewController {
         super.viewDidLoad()
         locationService.delegate = self
         controlView.layer.cornerRadius = 10.0
+        searchView.layer.cornerRadius = 15.0
     }
     
     
@@ -47,6 +50,19 @@ class MapViewVC: UIViewController {
         mapView.mapType = mapView.mapType == .standard ? .satellite :.standard
     }
     
+    @IBAction func didTapSearchBtn(_ sender: Any) {
+        SearchView(shown: true)
+    }
+    
+    @IBAction func didTapCloseSearchViewBtn(_ sender: Any) {
+        SearchView(shown: false)
+    }
+    
+    @IBAction func didTapRestaurantBtn(_ sender: Any) {
+    }
+    
+    @IBAction func didTapStarbucksBtn(_ sender: Any) {
+    }
     // MARK: - Private Function
     private func centerToUserLocation(){
         let mapRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
@@ -56,6 +72,17 @@ class MapViewVC: UIViewController {
         }
     }
     
+    private func SearchView(shown: Bool){
+        UIView.animate(withDuration: 0.3) {
+            [weak self] in
+            guard let weakSelf = self else {return}
+            
+            let viewHeight = weakSelf.searchView.frame.size.height
+            
+            weakSelf.searchViewTopConstraint.constant = shown ? -1*viewHeight : 0
+            weakSelf.view.layoutIfNeeded()
+        }
+    }
 }
 
 
