@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		704A68C8243C3EF9001EF8FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68C7243C3EF9001EF8FB /* AppDelegate.swift */; };
 		704A68CA243C3EF9001EF8FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68C9243C3EF9001EF8FB /* SceneDelegate.swift */; };
-		704A68CC243C3EF9001EF8FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68CB243C3EF9001EF8FB /* ViewController.swift */; };
+		704A68CC243C3EF9001EF8FB /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68CB243C3EF9001EF8FB /* MapViewVC.swift */; };
 		704A68CF243C3EF9001EF8FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 704A68CD243C3EF9001EF8FB /* Main.storyboard */; };
 		704A68D1243C3EFA001EF8FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 704A68D0243C3EFA001EF8FB /* Assets.xcassets */; };
 		704A68D4243C3EFA001EF8FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 704A68D2243C3EFA001EF8FB /* LaunchScreen.storyboard */; };
+		704A68E1243C428E001EF8FB /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68E0243C428E001EF8FB /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		704A68C4243C3EF9001EF8FB /* LearningMapKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningMapKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		704A68C7243C3EF9001EF8FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		704A68C9243C3EF9001EF8FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		704A68CB243C3EF9001EF8FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		704A68CB243C3EF9001EF8FB /* MapViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 		704A68CE243C3EF9001EF8FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		704A68D0243C3EFA001EF8FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		704A68D3243C3EFA001EF8FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		704A68D5243C3EFA001EF8FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		704A68E0243C428E001EF8FB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		704A68C6243C3EF9001EF8FB /* LearningMapKit */ = {
 			isa = PBXGroup;
 			children = (
+				704A68DF243C4277001EF8FB /* Service */,
 				704A68DE243C3F29001EF8FB /* Model */,
 				704A68DB243C3F15001EF8FB /* Supporting */,
 				704A68DC243C3F1B001EF8FB /* Control */,
@@ -78,7 +81,7 @@
 		704A68DC243C3F1B001EF8FB /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				704A68CB243C3EF9001EF8FB /* ViewController.swift */,
+				704A68CB243C3EF9001EF8FB /* MapViewVC.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -97,6 +100,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		704A68DF243C4277001EF8FB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				704A68E0243C428E001EF8FB /* LocationService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,8 +181,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				704A68CC243C3EF9001EF8FB /* ViewController.swift in Sources */,
+				704A68CC243C3EF9001EF8FB /* MapViewVC.swift in Sources */,
 				704A68C8243C3EF9001EF8FB /* AppDelegate.swift in Sources */,
+				704A68E1243C428E001EF8FB /* LocationService.swift in Sources */,
 				704A68CA243C3EF9001EF8FB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
