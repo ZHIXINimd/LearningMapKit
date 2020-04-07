@@ -56,15 +56,47 @@
 		704A68C6243C3EF9001EF8FB /* LearningMapKit */ = {
 			isa = PBXGroup;
 			children = (
-				704A68C7243C3EF9001EF8FB /* AppDelegate.swift */,
-				704A68C9243C3EF9001EF8FB /* SceneDelegate.swift */,
-				704A68CB243C3EF9001EF8FB /* ViewController.swift */,
-				704A68CD243C3EF9001EF8FB /* Main.storyboard */,
-				704A68D0243C3EFA001EF8FB /* Assets.xcassets */,
-				704A68D2243C3EFA001EF8FB /* LaunchScreen.storyboard */,
+				704A68DE243C3F29001EF8FB /* Model */,
+				704A68DB243C3F15001EF8FB /* Supporting */,
+				704A68DC243C3F1B001EF8FB /* Control */,
+				704A68DD243C3F23001EF8FB /* View */,
 				704A68D5243C3EFA001EF8FB /* Info.plist */,
 			);
 			path = LearningMapKit;
+			sourceTree = "<group>";
+		};
+		704A68DB243C3F15001EF8FB /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				704A68C7243C3EF9001EF8FB /* AppDelegate.swift */,
+				704A68C9243C3EF9001EF8FB /* SceneDelegate.swift */,
+				704A68D0243C3EFA001EF8FB /* Assets.xcassets */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		704A68DC243C3F1B001EF8FB /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				704A68CB243C3EF9001EF8FB /* ViewController.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		704A68DD243C3F23001EF8FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				704A68CD243C3EF9001EF8FB /* Main.storyboard */,
+				704A68D2243C3EFA001EF8FB /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		704A68DE243C3F29001EF8FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
