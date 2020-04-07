@@ -10,20 +10,22 @@ import UIKit
 import MapKit
 
 class MapViewVC: UIViewController {
-    
+    // MARK: - IBOutlets
     @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    // MARK: - Variables
     private let locationService = LocationService()
     
     private lazy var locationAlert: UIAlertController = {
         let alertController = UIAlertController(title: "Location Authorisation", message: "App can provide the points of interest based on your current location. To change the location please update your Privacy setting", preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "Location Authorisation", style: .default, handler: nil)
-        let settingAction = UIAlertAction(title: "Update Setting", style: .default) { (_) in
+       let okAction = UIAlertAction(title: "Location Authorisation", style: .default, handler: nil)
+       let settingAction = UIAlertAction(title: "Update Setting", style: .default) { (_) in
             if let url = URL(string: UIApplication.openSettingsURLString){
                 UIApplication.shared.open(url)
             }
@@ -35,6 +37,10 @@ class MapViewVC: UIViewController {
         return alertController
     }()
     
+    private var poiType: POIType?
+    private var pois = [POI]()
+    
+    // MARK:-  UIViewController Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         locationService.delegate = self
@@ -60,9 +66,13 @@ class MapViewVC: UIViewController {
     }
     
     @IBAction func didTapRestaurantBtn(_ sender: Any) {
+        poiType = .restaurant
+        searchPOI()
     }
     
     @IBAction func didTapStarbucksBtn(_ sender: Any) {
+        poiType = .starbucks
+        searchPOI()
     }
     // MARK: - Private Function
     private func centerToUserLocation(){
@@ -84,10 +94,41 @@ class MapViewVC: UIViewController {
             weakSelf.view.layoutIfNeeded()
         }
     }
+    
+    private func searchPOI(){
+        
+        guard let poiType = poiType else {
+            return
+        }
+        UIApplication.shared.isNetworkActivityIndicatorVisible =  true
+        
+        SearchService.poiSearch(for: poiType, around: mapView.centerCoordinate) { [weak self] (mapItems) in
+            self?.updateSearchResult(with: mapItems)
+        }
+        
+    }
+    
+    private func updateSearchResult(with mapItems: [MKMapItem]){
+        pois.removeAll()
+        for mapItem in mapItems{
+            if let name = mapItem.name, let address = mapItem.placemark.formattedAddress, let poiType = poiType{
+                let poi = POI(title: name, address: address, coordinate: mapItem.placemark.coordinate, poiType: poiType)
+                pois.append(poi)
+            }
+        }
+        
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(pois)
+        
+        DispatchQueue.main.async {
+            [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
 }
 
 
-
+// MARK: - LocatonServiceDelegate methods
 extension MapViewVC: LocationServiceDelegate{
     func setMapRegion(center: CLLocation) {
         let mapRegion = MKCoordinateRegion(center: center.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
@@ -112,12 +153,16 @@ extension MapViewVC: LocationServiceDelegate{
 // MARK: - TableViewDataSource and Delegate
 extension MapViewVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return pois.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellResult", for: indexPath)
+        let poi = pois[indexPath.row]
         
+        cell.textLabel?.text = poi.subtitle
+        cell.detailTextLabel?.text = poi.subtitle
+        cell.detailTextLabel?.numberOfLines = 0
         return cell
     }
     

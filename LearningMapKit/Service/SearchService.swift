@@ -11,10 +11,10 @@ import MapKit
 class SearchService{
     typealias SearchHandler = ([MKMapItem]) -> Void
     
-    static func poiSearch(for searchText: String, around center: CLLocationCoordinate2D, completion:@escaping SearchHandler){
+    static func poiSearch(for poiType: POIType, around center: CLLocationCoordinate2D, completion:@escaping SearchHandler){
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = searchText
+        request.naturalLanguageQuery = poiType.rawValue
         request.region = region
         
         MKLocalSearch(request: request).start { (response, error) in
