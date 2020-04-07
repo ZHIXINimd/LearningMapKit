@@ -12,6 +12,7 @@ import MapKit
 class MapViewVC: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var controlView: UIView!
     
     private let locationService = LocationService()
     
@@ -34,10 +35,23 @@ class MapViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationService.delegate = self
+        controlView.layer.cornerRadius = 10.0
     }
     
     
+    // MARK: - IBAction
+    @IBAction func userLocationBtnTapped(_ sender: Any) {
+        centerToUserLocation()
+    }
     
+    // MARK: - Private Function
+    private func centerToUserLocation(){
+        let mapRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.mapView.setRegion(mapRegion, animated: true)
+        }
+    }
     
 }
 

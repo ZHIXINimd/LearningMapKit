@@ -21,10 +21,43 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fT9-fC-MAW"/>
                                 </connections>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BD6-ll-pa9" userLabel="Control View">
+                                <rect key="frame" x="344" y="84" width="40" height="120"/>
+                                <subviews>
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wgz-gl-DHb">
+                                        <rect key="frame" x="4" y="5" width="35" height="35"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1a-T9-afZ" userLabel="CenterToUser">
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="8zI-aj-Hew"/>
+                                                    <constraint firstAttribute="width" constant="35" id="bmS-TE-2NS"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" image="current-location-icon"/>
+                                                <connections>
+                                                    <action selector="userLocationBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TJR-fb-rZy"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="mp8-mZ-gUk"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Wgz-gl-DHb" firstAttribute="leading" secondItem="BD6-ll-pa9" secondAttribute="leading" constant="4" id="Qdt-hX-T0M"/>
+                                    <constraint firstAttribute="height" constant="120" id="hDw-6D-meg"/>
+                                    <constraint firstItem="Wgz-gl-DHb" firstAttribute="top" secondItem="BD6-ll-pa9" secondAttribute="top" constant="5" id="j7P-Wk-jiT"/>
+                                    <constraint firstAttribute="width" constant="40" id="r30-2A-geM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="HVo-v0-0CC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8hX-za-OkP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BD6-ll-pa9" secondAttribute="trailing" constant="30" id="Bsm-bP-r68"/>
+                            <constraint firstItem="BD6-ll-pa9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="CHE-to-abX"/>
                             <constraint firstAttribute="trailing" secondItem="HVo-v0-0CC" secondAttribute="trailing" id="LHQ-w7-bSc"/>
                             <constraint firstAttribute="bottom" secondItem="HVo-v0-0CC" secondAttribute="bottom" id="bnh-IQ-zKU"/>
                             <constraint firstItem="HVo-v0-0CC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d8n-8n-y0g"/>
@@ -32,12 +65,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="controlView" destination="BD6-ll-pa9" id="ygM-5c-7ZC"/>
                         <outlet property="mapView" destination="HVo-v0-0CC" id="mks-Cn-Hfk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="139"/>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="current-location-icon" width="50" height="50"/>
+    </resources>
 </document>
