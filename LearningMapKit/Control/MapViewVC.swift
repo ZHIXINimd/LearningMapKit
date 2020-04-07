@@ -43,6 +43,9 @@ class MapViewVC: UIViewController {
     @IBAction func userLocationBtnTapped(_ sender: Any) {
         centerToUserLocation()
     }
+    @IBAction func didTapMapBtn(_ sender: Any) {
+        mapView.mapType = mapView.mapType == .standard ? .satellite :.standard
+    }
     
     // MARK: - Private Function
     private func centerToUserLocation(){

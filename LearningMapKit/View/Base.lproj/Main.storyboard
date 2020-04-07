@@ -25,7 +25,7 @@
                                 <rect key="frame" x="344" y="84" width="40" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wgz-gl-DHb">
-                                        <rect key="frame" x="4" y="5" width="35" height="35"/>
+                                        <rect key="frame" x="4" y="5" width="35" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1a-T9-afZ" userLabel="CenterToUser">
                                                 <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -36,6 +36,18 @@
                                                 <state key="normal" title="Button" image="current-location-icon"/>
                                                 <connections>
                                                     <action selector="userLocationBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TJR-fb-rZy"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUx-0c-gmY" userLabel="CenterToUser">
+                                                <rect key="frame" x="0.0" y="35" width="35" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="3IH-vL-ko6"/>
+                                                    <constraint firstAttribute="width" constant="35" id="m3a-1c-kEl"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" image="map-icon"/>
+                                                <connections>
+                                                    <action selector="didTapMapBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jEf-Zi-jSN"/>
+                                                    <action selector="userLocationBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="exS-i7-Wbn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -76,5 +88,6 @@
     </scenes>
     <resources>
         <image name="current-location-icon" width="50" height="50"/>
+        <image name="map-icon" width="50" height="50"/>
     </resources>
 </document>
