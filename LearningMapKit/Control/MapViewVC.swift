@@ -11,7 +11,7 @@ import MapKit
 
 class MapViewVC: UIViewController {
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var controlView: UIView!
     
     private let locationService = LocationService()

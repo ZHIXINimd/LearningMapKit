@@ -14,6 +14,7 @@
 		704A68D1243C3EFA001EF8FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 704A68D0243C3EFA001EF8FB /* Assets.xcassets */; };
 		704A68D4243C3EFA001EF8FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 704A68D2243C3EFA001EF8FB /* LaunchScreen.storyboard */; };
 		704A68E1243C428E001EF8FB /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68E0243C428E001EF8FB /* LocationService.swift */; };
+		704A68E3243C58C1001EF8FB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68E2243C58C1001EF8FB /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		704A68D3243C3EFA001EF8FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		704A68D5243C3EFA001EF8FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		704A68E0243C428E001EF8FB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		704A68E2243C58C1001EF8FB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				704A68CD243C3EF9001EF8FB /* Main.storyboard */,
 				704A68D2243C3EFA001EF8FB /* LaunchScreen.storyboard */,
+				704A68E2243C58C1001EF8FB /* MapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				704A68CC243C3EF9001EF8FB /* MapViewVC.swift in Sources */,
 				704A68C8243C3EF9001EF8FB /* AppDelegate.swift in Sources */,
+				704A68E3243C58C1001EF8FB /* MapView.swift in Sources */,
 				704A68E1243C428E001EF8FB /* LocationService.swift in Sources */,
 				704A68CA243C3EF9001EF8FB /* SceneDelegate.swift in Sources */,
 			);
