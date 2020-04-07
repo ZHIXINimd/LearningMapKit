@@ -128,16 +128,54 @@
                                             <constraint firstAttribute="height" constant="50" id="hTt-56-Xv9"/>
                                         </constraints>
                                     </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="POc-A5-jUs">
+                                        <rect key="frame" x="0.0" y="134" width="414" height="224.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellResult" textLabel="VpE-mG-sxW" detailTextLabel="SAg-6e-DOL" style="IBUITableViewCellStyleSubtitle" id="q32-rk-DHo">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q32-rk-DHo" id="NnZ-Ky-PXR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VpE-mG-sxW">
+                                                            <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SAg-6e-DOL">
+                                                            <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="MKs-8H-uqt"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="Ymy-PZ-iCi"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="Uzw-7h-wSX" firstAttribute="top" secondItem="SBg-97-dzf" secondAttribute="top" constant="20" id="62C-Aq-dhT"/>
                                     <constraint firstItem="r5q-uj-nTS" firstAttribute="top" secondItem="Uzw-7h-wSX" secondAttribute="bottom" constant="20" id="76r-Ec-4so"/>
+                                    <constraint firstAttribute="bottom" secondItem="POc-A5-jUs" secondAttribute="bottom" id="9Ew-sZ-mNV"/>
+                                    <constraint firstItem="POc-A5-jUs" firstAttribute="top" secondItem="r5q-uj-nTS" secondAttribute="bottom" constant="10" id="NbV-84-LM5"/>
                                     <constraint firstItem="r5q-uj-nTS" firstAttribute="leading" secondItem="SBg-97-dzf" secondAttribute="leading" constant="10" id="Vta-vb-phn"/>
                                     <constraint firstAttribute="trailing" secondItem="4hD-ex-elH" secondAttribute="trailing" constant="4" id="Y6D-13-Vmb"/>
                                     <constraint firstItem="Uzw-7h-wSX" firstAttribute="leading" secondItem="SBg-97-dzf" secondAttribute="leading" constant="20" id="ZSP-6U-hxd"/>
+                                    <constraint firstItem="POc-A5-jUs" firstAttribute="leading" secondItem="SBg-97-dzf" secondAttribute="leading" id="gRE-Vb-Kxv"/>
                                     <constraint firstItem="4hD-ex-elH" firstAttribute="leading" secondItem="Uzw-7h-wSX" secondAttribute="trailing" constant="10" id="iBL-jA-rsB"/>
                                     <constraint firstItem="4hD-ex-elH" firstAttribute="top" secondItem="SBg-97-dzf" secondAttribute="top" constant="4" id="v0v-CW-V1D"/>
+                                    <constraint firstAttribute="trailing" secondItem="POc-A5-jUs" secondAttribute="trailing" id="ypj-He-rl7"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -161,6 +199,7 @@
                         <outlet property="mapView" destination="HVo-v0-0CC" id="mks-Cn-Hfk"/>
                         <outlet property="searchView" destination="SBg-97-dzf" id="taP-nr-El7"/>
                         <outlet property="searchViewTopConstraint" destination="WnC-Zg-L7u" id="JRq-ts-AHw"/>
+                        <outlet property="tableView" destination="POc-A5-jUs" id="fnd-tz-S4I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

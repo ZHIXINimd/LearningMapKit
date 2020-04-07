@@ -15,6 +15,8 @@
 		704A68D4243C3EFA001EF8FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 704A68D2243C3EFA001EF8FB /* LaunchScreen.storyboard */; };
 		704A68E1243C428E001EF8FB /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68E0243C428E001EF8FB /* LocationService.swift */; };
 		704A68E3243C58C1001EF8FB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68E2243C58C1001EF8FB /* MapView.swift */; };
+		704A68E5243C6C95001EF8FB /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68E4243C6C95001EF8FB /* SearchService.swift */; };
+		704A68E8243C7341001EF8FB /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A68E7243C7341001EF8FB /* POI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		704A68D5243C3EFA001EF8FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		704A68E0243C428E001EF8FB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		704A68E2243C58C1001EF8FB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		704A68E4243C6C95001EF8FB /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		704A68E7243C7341001EF8FB /* POI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		704A68DE243C3F29001EF8FB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				704A68E7243C7341001EF8FB /* POI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				704A68E0243C428E001EF8FB /* LocationService.swift */,
+				704A68E4243C6C95001EF8FB /* SearchService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -184,9 +190,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704A68E8243C7341001EF8FB /* POI.swift in Sources */,
 				704A68CC243C3EF9001EF8FB /* MapViewVC.swift in Sources */,
 				704A68C8243C3EF9001EF8FB /* AppDelegate.swift in Sources */,
 				704A68E3243C58C1001EF8FB /* MapView.swift in Sources */,
+				704A68E5243C6C95001EF8FB /* SearchService.swift in Sources */,
 				704A68E1243C428E001EF8FB /* LocationService.swift in Sources */,
 				704A68CA243C3EF9001EF8FB /* SceneDelegate.swift in Sources */,
 			);
