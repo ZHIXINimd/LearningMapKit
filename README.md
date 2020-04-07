@@ -2,6 +2,7 @@
 ZHIXINimd
 
 1. Location Authorisation
+    Reading: https://developer.apple.com/documentation/corelocation/choosing_the_location_services_authorization_to_request
 2. User location
 3. Centre to user location
 4. Compass

@@ -44,6 +44,14 @@ class MapViewVC: UIViewController {
 
 
 extension MapViewVC: LocationServiceDelegate{
+    func setMapRegion(center: CLLocation) {
+        let mapRegion = MKCoordinateRegion(center: center.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        
+        DispatchQueue.main.async {
+            self.mapView.setRegion(mapRegion, animated: true)
+        }
+    }
+    
     func authorisationDenied() {
         DispatchQueue.main.async {
             [weak self] in
