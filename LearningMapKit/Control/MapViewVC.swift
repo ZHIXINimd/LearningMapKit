@@ -16,6 +16,7 @@ class MapViewVC: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
     
     
     // MARK: - Variables
@@ -40,14 +41,19 @@ class MapViewVC: UIViewController {
     private var poiType: POIType?
     private var pois = [POI]()
     private var mapCenterLocation: CLLocation?
+    private var searchCompleter = MKLocalSearchCompleter()
+    private var completerResults = [MKLocalSearchCompletion]()
+    private var completerSearch = false
     
     // MARK:-  UIViewController Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         locationService.delegate = self
+        searchCompleter.delegate = self
+        
         controlView.layer.cornerRadius = 10.0
         searchView.layer.cornerRadius = 15.0
-        
+        centerToUserLocation()
         mapCenterLocation = CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude)
     }
     
@@ -61,21 +67,34 @@ class MapViewVC: UIViewController {
     }
     
     @IBAction func didTapSearchBtn(_ sender: Any) {
+        poiType = nil
         SearchView(shown: true)
     }
     
     @IBAction func didTapCloseSearchViewBtn(_ sender: Any) {
-        SearchView(shown: false)
+        closeSlideView()
     }
     
     @IBAction func didTapRestaurantBtn(_ sender: Any) {
+        completerSearch = false
+        clearSearchTextField()
         poiType = .restaurant
         searchPOI()
     }
     
     @IBAction func didTapStarbucksBtn(_ sender: Any) {
+        completerSearch = false
+        clearSearchTextField()
         poiType = .starbucks
         searchPOI()
+    }
+    
+    @IBAction func textFieldEditingChange(_ sender: UITextField) {
+        poiType = .pin
+        
+        if let text = sender.text{
+            searchCompleter.queryFragment = text
+        }
     }
     // MARK: - Private Function
     private func centerToUserLocation(){
@@ -105,7 +124,7 @@ class MapViewVC: UIViewController {
         }
         UIApplication.shared.isNetworkActivityIndicatorVisible =  true
         
-        SearchService.poiSearch(for: poiType, around: mapView.centerCoordinate) { [weak self] (mapItems) in
+        SearchService.search(for: poiType.rawValue, around: mapView.centerCoordinate) { [weak self] (mapItems) in
             self?.updateSearchResult(with: mapItems)
         }
         
@@ -127,6 +146,35 @@ class MapViewVC: UIViewController {
             [weak self] in
             self?.tableView.reloadData()
         }
+    }
+    
+    
+    private func clearSearchTextField(){
+        searchTextField.text = nil
+        searchTextField.resignFirstResponder()
+    }
+    
+    private func closeSlideView(){
+        clearSearchTextField()
+        SearchView(shown: false)
+    }
+    
+    private func highlight(text: String, rangeValues: [NSValue]) -> NSAttributedString{
+        let attributes = [NSAttributedString.Key.backgroundColor: UIColor.yellow]
+        let highlightedString = NSMutableAttributedString(string: text)
+        
+        let ranges = rangeValues.map{$0.rangeValue}
+        ranges.forEach { (range) in
+            highlightedString.addAttributes(attributes, range: range)
+        }
+        
+        return highlightedString
+    }
+    
+    
+    private func centerMap(to poi: POI){
+        setMapRegion(center: CLLocation(latitude: poi.coordinate.latitude, longitude: poi.coordinate.longitude))
+        closeSlideView()
     }
 }
 
@@ -154,19 +202,47 @@ extension MapViewVC: LocationServiceDelegate{
 
 
 // MARK: - TableViewDataSource and Delegate
-extension MapViewVC: UITableViewDataSource{
+extension MapViewVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pois.count
+        return completerSearch ? completerResults.count : pois.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellResult", for: indexPath)
-        let poi = pois[indexPath.row]
+        if completerSearch{
+            let result = completerResults[indexPath.row]
+            cell.textLabel?.attributedText = highlight(text: result.title, rangeValues: result.titleHighlightRanges)
+            cell.detailTextLabel?.attributedText = highlight(text: result.subtitle, rangeValues: result.subtitleHighlightRanges)
+        }else{
+            let poi = pois[indexPath.row]
+            
+            cell.textLabel?.text = poi.subtitle
+            cell.detailTextLabel?.text = poi.subtitle
+            cell.detailTextLabel?.numberOfLines = 0
+        }
         
-        cell.textLabel?.text = poi.subtitle
-        cell.detailTextLabel?.text = poi.subtitle
-        cell.detailTextLabel?.numberOfLines = 0
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if completerSearch{
+            let searchResult = completerResults[indexPath.row]
+            
+            SearchService.search(for: searchResult.title) { [weak self] (mapItems) in
+                guard let weakSelf = self else {return}
+                
+                weakSelf.updateSearchResult(with: mapItems)
+                let poi = weakSelf.pois[0]
+                weakSelf.centerMap(to: poi)
+            }
+        }else{
+            let poi = pois[indexPath.row]
+            mapView.addAnnotation(poi)
+            centerMap(to: poi)
+        }
+        
+        completerResults.removeAll()
+        pois.removeAll()
     }
     
     
@@ -176,7 +252,7 @@ extension MapViewVC: UITableViewDataSource{
 // MARK: - MKMapViewDelegate
 extension MapViewVC: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        if let poiType = poiType{
+        if let poiType = poiType, poiType != .pin{
             let newCenterLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
             if let prevMapCenterLocation = mapCenterLocation{
                 if newCenterLocation.distance(from: prevMapCenterLocation) > 500
@@ -187,5 +263,31 @@ extension MapViewVC: MKMapViewDelegate{
                 
             }
         }
+    }
+}
+
+// MARK: - MKLocationSearchCompleterDelegate
+extension MapViewVC: MKLocalSearchCompleterDelegate{
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        completerSearch = true
+        completerResults = completer.results
+        tableView.reloadData()
+    }
+}
+
+
+// MARK: - UITextFieldDelegate
+extension MapViewVC: UITextFieldDelegate{
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+// MARK: - ScrollViewDelegate
+extension MapViewVC: UIScrollViewDelegate{
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchTextField.resignFirstResponder()
     }
 }

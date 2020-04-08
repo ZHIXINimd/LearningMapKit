@@ -96,6 +96,10 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldEditingChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="cK4-p4-F8s"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="pBk-S8-5QF"/>
+                                        </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="r5q-uj-nTS">
                                         <rect key="frame" x="10" y="74" width="127" height="50"/>
@@ -220,6 +224,7 @@
                     <connections>
                         <outlet property="controlView" destination="BD6-ll-pa9" id="ygM-5c-7ZC"/>
                         <outlet property="mapView" destination="HVo-v0-0CC" id="mks-Cn-Hfk"/>
+                        <outlet property="searchTextField" destination="Uzw-7h-wSX" id="1cv-nE-HiH"/>
                         <outlet property="searchView" destination="SBg-97-dzf" id="taP-nr-El7"/>
                         <outlet property="searchViewTopConstraint" destination="WnC-Zg-L7u" id="JRq-ts-AHw"/>
                         <outlet property="tableView" destination="POc-A5-jUs" id="fnd-tz-S4I"/>
