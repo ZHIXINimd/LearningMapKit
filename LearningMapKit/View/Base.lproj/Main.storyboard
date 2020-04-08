@@ -178,6 +178,26 @@
                                     <constraint firstAttribute="trailing" secondItem="POc-A5-jUs" secondAttribute="trailing" id="ypj-He-rl7"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1f-8t-8oV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUG-pR-G4K">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="V0L-hO-qTv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="regular"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dUG-pR-G4K" secondAttribute="bottom" id="JoO-yB-Xjw"/>
+                                    <constraint firstItem="dUG-pR-G4K" firstAttribute="leading" secondItem="Q1f-8t-8oV" secondAttribute="leading" id="Wj7-lA-du8"/>
+                                    <constraint firstItem="dUG-pR-G4K" firstAttribute="top" secondItem="Q1f-8t-8oV" secondAttribute="top" id="iGl-jJ-R7f"/>
+                                    <constraint firstAttribute="height" constant="60" id="ufQ-He-pmf"/>
+                                    <constraint firstAttribute="trailing" secondItem="dUG-pR-G4K" secondAttribute="trailing" id="yrG-bW-zqP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -186,8 +206,11 @@
                             <constraint firstItem="BD6-ll-pa9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="CHE-to-abX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SBg-97-dzf" secondAttribute="trailing" id="IZg-NX-kMd"/>
                             <constraint firstAttribute="trailing" secondItem="HVo-v0-0CC" secondAttribute="trailing" id="LHQ-w7-bSc"/>
+                            <constraint firstItem="Q1f-8t-8oV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Ro3-cj-BAj"/>
+                            <constraint firstItem="Q1f-8t-8oV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UlJ-KD-SYn"/>
                             <constraint firstItem="SBg-97-dzf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="WnC-Zg-L7u"/>
                             <constraint firstAttribute="bottom" secondItem="HVo-v0-0CC" secondAttribute="bottom" id="bnh-IQ-zKU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q1f-8t-8oV" secondAttribute="trailing" id="d8G-Ff-ucf"/>
                             <constraint firstItem="HVo-v0-0CC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d8n-8n-y0g"/>
                             <constraint firstItem="SBg-97-dzf" firstAttribute="height" secondItem="HVo-v0-0CC" secondAttribute="height" multiplier="0.4" id="stK-DM-eqr"/>
                             <constraint firstItem="SBg-97-dzf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="umF-DK-A8R"/>

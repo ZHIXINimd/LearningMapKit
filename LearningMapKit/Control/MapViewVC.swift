@@ -24,8 +24,8 @@ class MapViewVC: UIViewController {
     private lazy var locationAlert: UIAlertController = {
         let alertController = UIAlertController(title: "Location Authorisation", message: "App can provide the points of interest based on your current location. To change the location please update your Privacy setting", preferredStyle: .alert)
         
-       let okAction = UIAlertAction(title: "Location Authorisation", style: .default, handler: nil)
-       let settingAction = UIAlertAction(title: "Update Setting", style: .default) { (_) in
+        let okAction = UIAlertAction(title: "Location Authorisation", style: .default, handler: nil)
+        let settingAction = UIAlertAction(title: "Update Setting", style: .default) { (_) in
             if let url = URL(string: UIApplication.openSettingsURLString){
                 UIApplication.shared.open(url)
             }
@@ -39,6 +39,7 @@ class MapViewVC: UIViewController {
     
     private var poiType: POIType?
     private var pois = [POI]()
+    private var mapCenterLocation: CLLocation?
     
     // MARK:-  UIViewController Life Cycle
     override func viewDidLoad() {
@@ -46,6 +47,8 @@ class MapViewVC: UIViewController {
         locationService.delegate = self
         controlView.layer.cornerRadius = 10.0
         searchView.layer.cornerRadius = 15.0
+        
+        mapCenterLocation = CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude)
     }
     
     
@@ -167,4 +170,22 @@ extension MapViewVC: UITableViewDataSource{
     }
     
     
+}
+
+
+// MARK: - MKMapViewDelegate
+extension MapViewVC: MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if let poiType = poiType{
+            let newCenterLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+            if let prevMapCenterLocation = mapCenterLocation{
+                if newCenterLocation.distance(from: prevMapCenterLocation) > 500
+                {
+                    mapCenterLocation = newCenterLocation
+                    searchPOI()
+                }
+                
+            }
+        }
+    }
 }
